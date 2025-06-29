@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 
 public class SingleConnection {
 	
-     private static String url = "jdbc:postgresql://localhost:5432/javajdbc";// String de conexão com o banco de dados PostgreSQL
+     private static String url = "jdbc:postgresql://localhost:5432/javajdbcx";// String de conexão com o banco de dados PostgreSQL
      private static String user = "postgres";// Usuário
-     private static String password = "220822";// Senha
+     private static String password = "220822xxx";// Senha
     private static Connection connection = null;// Objeto de conexão
 
 
