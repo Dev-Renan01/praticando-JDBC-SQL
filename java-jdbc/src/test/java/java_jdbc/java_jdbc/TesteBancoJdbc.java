@@ -1,5 +1,7 @@
 package java_jdbc.java_jdbc;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 import conexaojdbc.SingleConnection;
@@ -19,6 +21,23 @@ public class TesteBancoJdbc {
 		userJavaJdbc.setEmail("charles@gmailcom");
 		
 		userJdbcDao.salvar(userJavaJdbc);
+	}
+	
+	@Test
+	public void initListar() {
+		UserJdbcDao dao = new UserJdbcDao();
+		
+		try {
+		List<UserJavaJdbc> list = dao.listar();
+		
+		for(UserJavaJdbc u : list) {
+			System.out.println(u);
+			System.out.println("___________________________________________");
+		}
+		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

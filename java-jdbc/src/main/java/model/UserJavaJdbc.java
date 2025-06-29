@@ -26,5 +26,10 @@ public class UserJavaJdbc {//Clase que representa o modelo (Representa id, nome,
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	@Override
+	public String toString() {
+		return "UserJavaJdbc [id=" + id + ", nome=" + nome + ", email=" + email + "]";
+	}
 
 }
