@@ -15,14 +15,13 @@ public class TesteBancoJdbc {
 		UserJdbcDao userJdbcDao = new UserJdbcDao();
 		UserJavaJdbc userJavaJdbc = new UserJavaJdbc();
 
-		userJavaJdbc.setId(5L);
-		userJavaJdbc.setNome("Charles");
-		userJavaJdbc.setEmail("charles@gmailcom");
+		userJavaJdbc.setNome("Paulo");
+		userJavaJdbc.setEmail("paulo@gmailcom");
 
 		userJdbcDao.salvar(userJavaJdbc);
 	}
-	
-	//@Test
+
+	// @Test
 	public void initListar() {
 		UserJdbcDao dao = new UserJdbcDao();
 
@@ -38,36 +37,44 @@ public class TesteBancoJdbc {
 			e.printStackTrace();
 		}
 	}
-	
 
 	//@Test
 	public void initBuscar() {
 		UserJdbcDao dao = new UserJdbcDao();
-		
+
 		try {
 			UserJavaJdbc userJavaJdbc = dao.buscar(2L);
-			
+
 			System.out.println(userJavaJdbc);
-						
-		}catch (Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
 
-	@Test
+	//@Test
 	public void initAtualizar() {
 		try {
 			UserJdbcDao dao = new UserJdbcDao();
 
 			UserJavaJdbc objetoBanco = dao.buscar(5L);
-			
+
 			dao.atualizar(objetoBanco);
-			
+
 		} catch (Exception e) {
 
 			e.printStackTrace();
 		}
 	}
-
+	
+	@Test
+	public void initDeletar() {
+		try {
+			UserJdbcDao dao = new UserJdbcDao();
+			 dao.deletar(6L);
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

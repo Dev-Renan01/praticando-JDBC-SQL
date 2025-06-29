@@ -22,15 +22,14 @@ public class UserJdbcDao {// Dao -> Classe onde cria as operações de insert us
 		try {
 
 			// SQL para inserir um novo usuário na tabela userjavajdbc
-			String sql = "insert into userjavajdbc (id, nome, email) values (?,?,?)";
+			String sql = "insert into userjavajdbc (nome, email) values (?,?)";
 
 			// Prepara o comando SQL para execução
 			PreparedStatement insert = connection.prepareStatement(sql);
 
 			// Define os valores dos parâmetros na ordem (1 = id, 2 = nome, 3 = email)
-			insert.setLong(1, user.getId());
-			insert.setString(2, user.getNome());
-			insert.setString(3, user.getEmail());
+			insert.setString(1, user.getNome());
+			insert.setString(2, user.getEmail());
 
 			// Executa o INSERT no banco de dados
 			insert.execute();
@@ -117,7 +116,24 @@ public class UserJdbcDao {// Dao -> Classe onde cria as operações de insert us
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+	}
+	
+	
+	public void deletar(Long id) {
+		try {
+		UserJavaJdbc user = new UserJavaJdbc();
+		
+		String sql = "delete from userjavajdbc where id = " + id;
+		
+		PreparedStatement statement = connection.prepareStatement(sql);
+		
+		statement.execute();
+		connection.commit();
+		
+		}catch (Exception e) {
+			
+			e.printStackTrace();
+		}
 	}
 
 }
