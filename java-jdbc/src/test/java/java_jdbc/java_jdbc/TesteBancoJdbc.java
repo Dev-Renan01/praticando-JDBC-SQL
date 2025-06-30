@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import conexaojdbc.SingleConnection;
 import dao.UserJdbcDao;
+import model.Telefone;
 import model.UserJavaJdbc;
 
 public class TesteBancoJdbc {
@@ -21,7 +22,7 @@ public class TesteBancoJdbc {
 		userJdbcDao.salvar(userJavaJdbc);
 	}
 
-	// @Test
+	 //@Test
 	public void initListar() {
 		UserJdbcDao dao = new UserJdbcDao();
 
@@ -67,14 +68,26 @@ public class TesteBancoJdbc {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void initDeletar() {
 		try {
 			UserJdbcDao dao = new UserJdbcDao();
-			 dao.deletar(6L);
+			 dao.deletar(3L);
 			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@Test
+	public void testeInsertTelefone() {
+		Telefone telefone = new Telefone();
+		
+		telefone.setNumero("(81) 98977-3212");
+		telefone.setTipo("Casa");
+		telefone.setUsuario(7L);
+		
+		UserJdbcDao dao = new UserJdbcDao();
+		dao.salvarTelefone(telefone);
 	}
 }

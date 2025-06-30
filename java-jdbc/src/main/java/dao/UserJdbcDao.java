@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import conexaojdbc.SingleConnection;
+import model.Telefone;
 import model.UserJavaJdbc;
 
 public class UserJdbcDao {// Dao -> Classe onde cria as operações de insert usando o objedo model
@@ -41,6 +42,28 @@ public class UserJdbcDao {// Dao -> Classe onde cria as operações de insert us
 			e.printStackTrace();
 		}
 	}
+	
+	
+	public void salvarTelefone(Telefone telefone) {
+		
+		try {
+			
+			String sql = "insert into telefoneuser(numero, tipo, usuariopessoa) values(?,?,?)";
+			PreparedStatement statement = connection.prepareStatement(sql);
+			
+			statement.setString(1, telefone.getNumero());
+			statement.setString(2, telefone.getTipo());
+			statement.setLong(3, telefone.getUsuario());
+			
+			
+			statement.execute();
+			connection.commit();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 
 	public List<UserJavaJdbc> listar() {// Retorna a linsa de users
 
