@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import conexaojdbc.SingleConnection;
 import model.Telefone;
@@ -157,6 +158,29 @@ public class UserJdbcDao {// Dao -> Classe onde cria as operações de insert us
 			
 			e.printStackTrace();
 		}
+	}
+	
+	public void deletarFones(Long id){
+		try {
+			
+			UserJavaJdbc user = new UserJavaJdbc();
+			
+			String sqlFone = "delete from telefoneuser where usuariopessoa = " + id;
+			String sqlUser = "delete from userjavajdbc where id = " + id;
+			PreparedStatement statement = connection.prepareStatement(sqlFone);
+						
+			statement.executeUpdate();
+			connection.commit();
+			
+			PreparedStatement statement02 = connection.prepareStatement(sqlUser);
+			statement02.executeUpdate();
+			connection.commit();
+			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

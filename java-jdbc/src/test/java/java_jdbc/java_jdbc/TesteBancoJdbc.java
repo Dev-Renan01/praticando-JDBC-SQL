@@ -79,7 +79,7 @@ public class TesteBancoJdbc {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void testeInsertTelefone() {
 		Telefone telefone = new Telefone();
 		
@@ -89,5 +89,18 @@ public class TesteBancoJdbc {
 		
 		UserJdbcDao dao = new UserJdbcDao();
 		dao.salvarTelefone(telefone);
+	}
+	
+	@Test
+	public void deleteFonesPorUser() {
+		
+		try {
+			
+		UserJdbcDao dao = new UserJdbcDao();
+		dao.deletarFones(8L);
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
